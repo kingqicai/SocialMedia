@@ -26,7 +26,7 @@ class UserService extends Service {
      */
     async getUserByLoginName(loginName) {
         return this.ctx.model.User.findOne({
-            where: { login_name: loginName, deleted: false }
+            where: { login_name: loginName, deleted: 0 }
         });
     }
 
