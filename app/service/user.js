@@ -54,7 +54,7 @@ class UserService extends Service {
                 id: uuid.v4(),
                 create_time: new Date(), // 创建时间 `now()` on db server
                 register_time: new Date(), // 创建时间 `now()` on db server
-                deleted: false // 未被删除
+                deleted: 0 // 未被删除
             },
             userVo
         );

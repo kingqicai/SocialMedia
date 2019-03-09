@@ -1,4 +1,4 @@
-'use strict';
+  'use strict';
 
 const validator = require('validator');
 const utility = require('utility');
