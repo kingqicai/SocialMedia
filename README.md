@@ -4,8 +4,8 @@ copyright for us
 # Social-Media-Monitor
 
 ## 依赖
-- [egg]: https://eggjs.org
-- [layui]: http://www.layui.com/
+- [egg](https://eggjs.org)
+- [layui](http://www.layui.com/)
 
 ## 快速入门
 
