@@ -1,0 +1,47 @@
+<!-- header -->
+<div class="layui-header">
+    <a class="layui-logo" href="/">
+        <%- config.name %>
+    </a>
+    <!-- 左侧导航 -->
+    <ul class="layui-nav layui-layout-left">
+        <li class="layui-nav-item">
+            <a href="/index">控制台</a>
+        </li>
+        <li class="layui-nav-item">
+            <a href="/index">统计分析</a>
+        </li>
+    </ul>
+    <!-- 右侧导航 -->
+    <ul class="layui-nav layui-layout-right">
+        <li class="layui-nav-item">
+            <a href="/about">关于</a>
+        </li>
+        <% if (current_user) { %>
+            <li class="layui-nav-item">
+                <a href="javascript:;">
+                    <img src="<%- current_user.avatar %>" class="layui-nav-img">
+                    <%- current_user.login_name%>
+                </a>
+                <dl class="layui-nav-child">
+                    <!-- <dd>
+                        <a href="">基本资料</a>
+                    </dd>
+                    <dd>
+                        <a href="">安全设置</a>
+                    </dd> -->
+                    <dd>
+                        <a href="/signout">退出登陆</a>
+                    </dd>
+                </dl>
+            </li>
+            <% } else { %>
+                <li class="layui-nav-item">
+                    <a href='/signin'>登录</a>
+                </li>
+                <li class="layui-nav-item">
+                    <a href='/signup'>注册</a>
+                </li>
+                <% } %>
+    </ul>
+</div>

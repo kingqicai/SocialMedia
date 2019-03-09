@@ -1,0 +1,12 @@
+{
+    "extends": "eslint-config-egg",
+    "rules": {
+        "indent": [2, 4],
+        "valid-jsdoc": ["error", { "requireReturn": false }],
+        "comma-dangle": ["error", "never"],
+        "space-before-function-paren": 0,
+        "no-bitwise": "off",
+        "object-curly-spacing": 0,
+        "array-bracket-spacing": 0
+    }
+}

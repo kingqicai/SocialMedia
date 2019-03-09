@@ -1,0 +1,156 @@
+@activeColor: #72aad4;
+@descColor: #999;
+/* 顶部导航栏高度和背景色 */
+
+.layui-layout-admin .layui-header {
+    background: #f9f9f9;
+    height: 56px;
+    border-bottom: 1px solid rgba(230, 230, 230, 0.99);
+}
+
+.layui-layout-admin .layui-footer {
+    left: 0;
+    text-align: center;
+}
+
+.layui-nav {
+    background: initial;
+    .layui-nav-item a {
+        color: #3C3C3C;
+        &:hover {
+            color: #009688;
+        }
+    }
+}
+
+.custom-side {
+    border-right: 1px solid rgba(230, 230, 230, 0.99);
+}
+
+.custom-nav {
+    .layui-icon {
+        font-size: 18px;
+        margin-right: 6px;
+    }
+    /* 左侧的导航栏 */
+    .layui-nav-item {
+        line-height: 60px;
+        a {
+            height: 60px;
+            line-height: 60px;
+            font-size: 18px;
+            &:hover {
+                background: #f9f9f9;
+                color: #009688;
+            }
+        }
+    }
+}
+
+.text-ellipsis {
+    display: block;
+    width: 98%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.fly-panel {
+    margin-bottom: 15px;
+    border-radius: 2px;
+    background-color: #fff;
+    box-shadow: 0 1px 2px 0 rgba(0, 0, 0, .05);
+    padding: 20px;
+}
+
+.mt-20 {
+    margin-top: 20px;
+}
+
+.mr-10 {
+    margin-right: 10px;
+}
+
+.mr-4 {
+    margin-right: 4px;
+}
+
+// 清除阴影
+.no-shadow {
+    box-shadow: none;
+    margin: 0;
+}
+
+.layui-card {
+    border: 1px solid #e6e6e6;
+}
+
+table {
+    width: 100%;
+    td {
+        padding: 8px 0;
+    }
+    tr:hover {
+        td {
+            background-color: #f5f5f5;
+        }
+    }
+}
+
+section {
+    margin-bottom: 10px;
+}
+
+// 今日监控|监控总量
+.monitorItem,
+.volumeItem {
+    display: flex;
+    height: 100px;
+    align-items: center;
+    font-size: 16px;
+    justify-content: center;
+    .layui-icon {
+        font-size: 30px;
+        color: #1E9FFF;
+    }
+    .title {
+        margin: 0 10px;
+        color: #666;
+    }
+    .value {
+        color: @activeColor;
+    }
+}
+
+// 舆情监控
+.monitorWrapper {
+    .layui-badge {
+        margin: 0 5px;
+    }
+    .monitorItem {
+        .right {
+            margin-left: 10px;
+            .layui-badge-dot {
+                margin-right: 5px;
+                margin-bottom: 1px;
+            }
+            .title {
+                margin: 0;
+            }
+            .value:nth-child(2) {
+                color: #009688;
+            }
+            .value:nth-child(3) {
+                color: #FF5722;
+            }
+        }
+    }
+}
+
+// 文章列表表格
+.articleListTable {
+    tr {
+        border-bottom: 1px dashed #d6dfe6;
+        color: @descColor;
+    }
+}

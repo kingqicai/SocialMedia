@@ -1,0 +1,480 @@
+<div id="consoleWrapper">
+    <div class="layui-row layui-col-space10">
+        <div class="layui-col-md6">
+            <!-- 今日监控 && 监控总量 -->
+            <section>
+                <div class="layui-tab layui-tab-card no-shadow">
+                    <ul class="layui-tab-title">
+                        <li class="layui-this">今日监控</li>
+                        <li>监控总量</li>
+                    </ul>
+                    <div class="layui-tab-content">
+                        <div class="layui-tab-item layui-show">
+                            <div class="layui-row volumeWrapper">
+                                <div class="layui-col-xs3">
+                                    <div class="volumeItem">
+                                        <i class="layui-icon layui-icon-website"></i>
+                                        <span class="title">网站</span>
+                                        <span class="value"><%= webTodayCnt %></span>
+                                    </div>
+                                </div>
+                                <div class="layui-col-xs3">
+                                    <div class="volumeItem">
+                                        <i class="layui-icon layui-icon-login-weibo"></i>
+                                        <span class="title">微博</span>
+                                        <span class="value"><%= weiboTodayCnt %></span>
+                                    </div>
+                                </div>
+                                <div class="layui-col-xs3">
+                                    <div class="volumeItem">
+                                        <i class="layui-icon layui-icon-login-wechat"></i>
+                                        <span class="title">微信</span>
+                                        <span class="value"><%= wechatTodayCnt %></span>
+                                    </div>
+                                </div>
+                                <div class="layui-col-xs3">
+                                    <div class="volumeItem">
+                                        <i class="layui-icon layui-icon-cellphone"></i>
+                                        <span class="title">其他</span>
+                                        <span class="value"><%= otherTodayCnt %></span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="layui-tab-item">
+                            <div class="layui-row volumeWrapper">
+                                <div class="layui-col-xs3">
+                                    <div class="volumeItem">
+                                        <i class="layui-icon layui-icon-website"></i>
+                                        <span class="title">网站</span>
+                                        <span class="value"><%= webTotalCnt %></span>
+                                    </div>
+                                </div>
+                                <div class="layui-col-xs3">
+                                    <div class="volumeItem">
+                                        <i class="layui-icon layui-icon-login-weibo"></i>
+                                        <span class="title">微博</span>
+                                        <span class="value"><%= weiboTotalCnt %></span>
+                                    </div>
+                                </div>
+                                <div class="layui-col-xs3">
+                                    <div class="volumeItem">
+                                        <i class="layui-icon layui-icon-login-wechat"></i>
+                                        <span class="title">微信</span>
+                                        <span class="value"><%= wechatTotalCnt %></span>
+                                    </div>
+                                </div>
+                                <div class="layui-col-xs3">
+                                    <div class="volumeItem">
+                                        <i class="layui-icon layui-icon-cellphone"></i>
+                                        <span class="title">其他</span>
+                                        <span class="value"><%= otherTotalCnt %></span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 负面信息-->
+            <section>
+                <div class="layui-card">
+                    <div class="layui-card-header">
+                        <span class="layui-badge-dot layui-bg-blue mr-10"></span>负面信息</div>
+                    <div class="layui-card-body">
+                        <table class="articleListTable">
+                            <% pages.rows.forEach(function(item){ %>
+                            <tr>
+                                <td width="70%">
+                                    <a class="text-ellipsis" title="<%= item.title %>" href="/<%= item.nid %>/"><span class="layui-badge-dot layui-bg-gray mr-4"></span>
+                                        <%= item.title %></a>
+                                </td>
+                                <td width="15%"><span class="text-ellipsis">
+                                        <%= item.source %><span></td>
+                                <td width="5%">
+                                    <%= item.create_time %>
+                                </td>
+                                <td width="5%" align="center">
+                                    <i class="layui-icon layui-icon-rate"></i>
+                                </td>
+                                <td width="5%" align="center">
+                                    <i class="layui-icon layui-icon-delete"></i>
+                                </td>
+                            </tr>
+                            <% }) %>
+                        </table>
+                    </div>
+                </div>
+            </section>
+            <!--预警推送-->
+            <section>
+                <div class="layui-card">
+                    <div class="layui-card-header">
+                        <span class="layui-badge-dot layui-bg-blue mr-10"></span>预警推送</div>
+                    <div class="layui-card-body">
+                        <table class="articleListTable">
+                            <% pages1.rows.forEach(function(item){ %>
+                            <tr>
+                                <td width="70%">
+                                    <a class="text-ellipsis" title="<%= item.title %>" href=""><span class="layui-badge-dot layui-bg-gray mr-4"></span>
+                                        <%= item.title %></a>
+                                </td>
+                                <td width="15%"><span class="text-ellipsis">
+                                        <%= item.source %><span></td>
+                                <td width="5%">
+                                    <%= item.create_time %>
+                                </td>
+                                <td width="5%" align="center">
+                                    <i class="layui-icon layui-icon-rate"></i>
+                                </td>
+                                <td width="5%" align="center">
+                                    <i class="layui-icon layui-icon-delete"></i>
+                                </td>
+                            </tr>
+                            <% }) %>
+                        </table>
+                    </div>
+                </div>
+            </section>
+            <!-- 专题统计 -->
+            <section>
+                <div class="layui-card">
+                    <div class="layui-card-header">
+                        <span class="layui-badge-dot layui-bg-blue mr-10"></span>专题统计</div>
+                    <div class="layui-card-body">
+                        <table class="articleListTable">
+                            <% pages2.rows.forEach(function(item){ %>
+                            <tr>
+                                <td width="70%">
+                                    <a class="text-ellipsis" title="<%= item.title %>" href=""><span class="layui-badge-dot layui-bg-gray mr-4"></span>
+                                        <%= item.title %></a>
+                                </td>
+                                <td width="15%"><span class="text-ellipsis">
+                                        <%= item.source %><span></td>
+                                <td width="5%">
+                                    <%= item.create_time %>
+                                </td>
+                                <td width="5%" align="center">
+                                    <i class="layui-icon layui-icon-rate"></i>
+                                </td>
+                                <td width="5%" align="center">
+                                    <i class="layui-icon layui-icon-delete"></i>
+                                </td>
+                            </tr>
+                            <% }) %>
+                        </table>
+                    </div>
+                </div>
+            </section>
+        </div>
+        <!-- 网页右侧内容-->
+        <div class="layui-col-md6">
+            <!-- 舆情监控 -->
+            <section>
+                <div class="layui-card monitorWrapper">
+                    <div class="layui-card-header">
+                        <div>
+                            舆情监控
+                            <span class="layui-badge layui-bg-green">正面</span>
+                            <span class="layui-badge">负面</span>
+                        </div>
+                    </div>
+                    <div class="layui-card-body">
+                        <div class="layui-row">
+                            <div class="layui-col-xs3">
+                                <div class="monitorItem">
+                                    <i class="layui-icon layui-icon-dialogue"></i>
+                                    <div class="right">
+                                        <p class="title">网站</p>
+                                        <p class="value">
+                                            <span class="layui-badge-dot layui-bg-green"></span>12</p>
+                                        <p class="value">
+                                            <span class="layui-badge-dot"></span>2</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="layui-col-xs3">
+                                <div class="monitorItem">
+                                    <i class="layui-icon layui-icon-login-wechat"></i>
+                                    <div class="right">
+                                        <p class="title">微博</p>
+                                        <p class="value">
+                                            <span class="layui-badge-dot layui-bg-green"></span>133</p>
+                                        <p class="value">
+                                            <span class="layui-badge-dot"></span>34</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="layui-col-xs3">
+                                <div class="monitorItem">
+                                    <i class="layui-icon layui-icon-login-weibo"></i>
+                                    <div class="right">
+                                        <p class="title">微信</p>
+                                        <p class="value">
+                                            <span class="layui-badge-dot layui-bg-green"></span>404</p>
+                                        <p class="value">
+                                            <span class="layui-badge-dot"></span>111</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="layui-col-xs3">
+                                <div class="monitorItem">
+                                    <i class="layui-icon layui-icon-app"></i>
+                                    <div class="right">
+                                        <p class="title">其他</p>
+                                        <p class="value">
+                                            <span class="layui-badge-dot layui-bg-green"></span>48</p>
+                                        <p class="value">
+                                            <span class="layui-badge-dot"></span>5</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <section>
+                <div class="layui-card">
+                    <div class="layui-card-header">
+                        <span class="layui-badge-dot layui-bg-blue mr-10"></span>载体分布</div>
+                    <div class="layui-card-body" style="padding: 0">
+                        <div id="ztfbWrapper" style="width: 100%;height:280px;"></div>
+                    </div>
+                </div>
+            </section>
+            <section>
+                <div class="layui-card">
+                    <div class="layui-card-header">
+                        <span class="layui-badge-dot layui-bg-blue mr-10"></span>载体趋势分析</div>
+                    <div class="layui-card-body" style="padding: 0">
+                        <div id="ztqsfxWrapper" style="width: 100%;height:280px;"></div>
+                    </div>
+                </div>
+            </section>
+            <!-- 热词云图 -->
+            <section>
+                <div class="layui-card">
+                    <div class="layui-card-header">
+                        <span class="layui-badge-dot layui-bg-blue mr-10"></span>热词云图</div>
+                    <div class="layui-card-body" style="padding: 0">
+                        <div id="wordCloudWrapper" style="width: 100%;height:280px;"></div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </div>
+</div>
+
+
+<script src="http://data-visual.cn/datav/src/js/echarts/extension/echarts-wordcloud.min.js"></script>
+<script>
+    $(function () {
+        // === 载体分布 ===
+        var atqsfxData = [
+            { "id": null, "subjectid": null, "subjectname": null, "newsAcount": 619, "weiboAcount": 54, "weixinAcount": 374, "otherAcount": 143,  "emotion": null, "updatetime": "2018-06-25", "pubdate": null },
+            { "id": null, "subjectid": null, "subjectname": null, "newsAcount": 256, "weiboAcount": 32, "weixinAcount": 456, "otherAcount": 852,  "emotion": null, "updatetime": "2018-06-29", "pubdate": null },
+            { "id": null, "subjectid": null, "subjectname": null, "newsAcount": 846, "weiboAcount": 35, "weixinAcount": 489, "otherAcount": 623,  "emotion": null, "updatetime": "2018-07-05", "pubdate": null },
+            { "id": null, "subjectid": null, "subjectname": null, "newsAcount": 493, "weiboAcount": 46, "weixinAcount": 843, "otherAcount": 36,  "emotion": null, "updatetime": "2018-07-15", "pubdate": null },
+            { "id": null, "subjectid": null, "subjectname": null, "newsAcount": 631, "weiboAcount": 84, "weixinAcount": 647, "otherAcount": 112,  "emotion": null, "updatetime": "2018-07-16", "pubdate": null},
+        ];
+        
+        var series1Data = [
+            { value: 0, name: '正面', selected: true },
+            { value: 0, name: '负面' },
+            { value: 0, name: '中性' }
+        ];
+
+        var series2Data = [
+            { value: 0, name: '网站', key: 'newsAcount' },
+            { value: 0, name: '微博', key: 'weiboAcount' },
+            { value: 0, name: '微信', key: 'weixinAcount' },
+            { value: 0, name: '其他', key: 'otherAcount' }];
+
+        atqsfxData.forEach(item => {
+            // 负面
+            if (item.emotion == '-2') series1Data[1].value = item.infoAcount;
+            if (item.emotion == '0') series1Data[2].value = item.infoAcount;
+            if (item.emotion == '1') series1Data[0].value = item.infoAcount;
+        });
+
+        series2Data.forEach(a => {
+            atqsfxData.forEach(b => {
+                a.value += b[a.key];
+            })
+        })
+
+        var ztfbOption = {
+            tooltip: {
+                trigger: 'item',
+                formatter: "{a} <br/>{b}: {c} ({d}%)"
+            },
+            legend: {
+                orient: 'vertical',
+                x: 'left',
+                data: series2Data.map(item => item.name)
+            },
+            grid: {
+                top: '2px',
+                bottom: '2px'
+            },
+            series: [
+                {
+                    name: '访问来源',
+                    type: 'pie',
+                    selectedMode: 'single',
+                    radius: [0, '30%'],
+
+                    label: {
+                        normal: {
+                            position: 'inner'
+                        }
+                    },
+                    labelLine: {
+                        normal: {
+                            show: false
+                        }
+                    },
+                    data: series1Data
+                },
+                {
+                    name: '载体分布',
+                    type: 'pie',
+                    radius: ['40%', '55%'],
+                    label: {
+                        normal: {
+                            rich: {
+                                a: {
+                                    color: '#999',
+                                    lineHeight: 22,
+                                    align: 'center'
+                                },
+                                hr: {
+                                    borderColor: '#aaa',
+                                    width: '100%',
+                                    borderWidth: 0.5,
+                                    height: 0
+                                },
+                                b: {
+                                    fontSize: 16,
+                                    lineHeight: 33
+                                },
+                                per: {
+                                    color: '#eee',
+                                    backgroundColor: '#334455',
+                                    padding: [2, 4],
+                                    borderRadius: 2
+                                }
+                            }
+                        }
+                    },
+                    data: series2Data
+                }
+            ]
+        };
+        var ztfbWrapperChart = echarts.init(document.getElementById('ztfbWrapper'));
+        ztfbWrapperChart.setOption(ztfbOption);
+
+        
+        
+        var atqsfxCategoryData = [
+            { name: '新闻', key: 'newsAcount' },
+            { name: '微博', key: 'weiboAcount' },
+            { name: '微信', key: 'weixinAcount' },
+            { name: '其他', key: 'otherAcount' }
+        ]
+
+        var atqsfxSeriesData = [];
+        atqsfxCategoryData.forEach(a => {
+            var data = [];
+            atqsfxData.forEach(b => {
+                data.push(b[a.key]);
+            })
+
+            atqsfxSeriesData.push({
+                name: a.name,
+                type: 'line',
+                data: data,
+                markPoint: {
+                    label: {
+                        show: true,
+
+                    },
+                    data: [
+                        { type: 'max', name: '最大值' },
+                        { type: 'min', name: '最小值' },
+                    ]
+                }
+            })
+        })
+
+        var atqsfxOption = {
+            tooltip: {
+                trigger: 'axis',
+            },
+            grid: {
+                top: '40px',
+                bottom: '40px',
+                right: '40px'
+            },
+            legend: {
+                data: atqsfxCategoryData.map(item => item.name)
+            },
+            xAxis: {
+                type: 'category',
+                data: atqsfxData.map(item => item.updatetime)
+            },
+            yAxis: {
+                type: 'value',
+            },
+            series: atqsfxSeriesData
+        };
+        var ztqsfxWrapperChart = echarts.init(document.getElementById('ztqsfxWrapper'));
+        ztqsfxWrapperChart.setOption(atqsfxOption);
+
+
+        // === 热词云图 ===
+        var wordCloudChart = echarts.init(document.getElementById('wordCloudWrapper'));
+        // 指定图表的配置项和数据
+        var wordCloudOption = {
+            // backgroundColor: '#131f56',
+            tooltip: {
+                show: true
+            },
+            grid: {
+                top: '10px',
+                bottom: '10px',
+                containLabel: true
+            },
+            series: [{
+                name: '热点分析',
+                type: 'wordCloud',
+                textPadding: 0,
+                autoSize: {
+                    enable: true,
+                    minSize: 6
+                },
+                textStyle: {
+                    normal: {
+                        color: function () {
+                            return 'rgb(' + [
+                                Math.round(Math.random() * 105) + 120,
+                                Math.round(Math.random() * 105) + 120,
+                                Math.round(Math.random() * 105) + 120
+                            ].join(',') + ')';
+                        }
+                    },
+                    emphasis: {
+                        shadowBlur: 2,
+                        shadowColor: '#333'
+                    }
+                },
+                data: [{ "value": 807, "name": "维权" }, { "value": 6, "name": "债务压顶,如意系,遭大跌" }, { "value": 261, "name": "临沂大学" }, { "value": 4805, "name": "济南" }, { "value": 305, "name": "韩立华" }, { "value": 4, "name": "如意集团" }, { "value": 35, "name": "债务压顶" }, { "value": 5, "name": "如意系" }, { "value": 5, "name": "如意集团,如意科技,山东如意" }, { "value": 73565, "name": "青岛" }, { "value": 491, "name": "章丘市" }, { "value": 5, "name": "维权,举报" }, { "value": 3, "name": "滨州市" }, { "value": 1564, "name": "业主" }, { "value": 20154, "name": "上合峰会" }, { "value": 44, "name": "济南地铁" }, { "value": 11, "name": "山东如意毛纺服装集团股份有限公司,如意集团,如意科技,山东如意" }, { "value": 886, "name": "上合峰会,上合" }, { "value": 1, "name": "山东如意" }, { "value": 753, "name": "举报" }, { "value": 31, "name": "山东如意毛纺服装集团股份有限公司" }, { "value": 305, "name": "大庆" }, { "value": 9, "name": "如意系,遭大跌" }, { "value": 52536, "name": "上合" }, { "value": 3, "name": "如意科技" }, { "value": 1, "name": "举报,拉条幅" }, { "value": 3197, "name": "济宁" }]
+            }]
+        };
+
+        // 使用刚指定的配置项和数据显示图表。
+        wordCloudChart.setOption(wordCloudOption);
+
+    })
+</script>

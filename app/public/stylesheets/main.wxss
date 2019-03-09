@@ -1,0 +1,128 @@
+/* 顶部导航栏高度和背景色 */
+.layui-layout-admin .layui-header {
+  background: #f9f9f9;
+  height: 56px;
+  border-bottom: 1px solid rgba(230, 230, 230, 0.99);
+}
+.layui-layout-admin .layui-footer {
+  left: 0;
+  text-align: center;
+}
+.layui-nav {
+  background: initial;
+}
+.layui-nav .layui-nav-item a {
+  color: #3C3C3C;
+}
+.layui-nav .layui-nav-item a:hover {
+  color: #009688;
+}
+.custom-side {
+  border-right: 1px solid rgba(230, 230, 230, 0.99);
+}
+.custom-nav {
+  /* 左侧的导航栏 */
+}
+.custom-nav .layui-icon {
+  font-size: 18px;
+  margin-right: 6px;
+}
+.custom-nav .layui-nav-item {
+  line-height: 60px;
+}
+.custom-nav .layui-nav-item a {
+  height: 60px;
+  line-height: 60px;
+  font-size: 18px;
+}
+.custom-nav .layui-nav-item a:hover {
+  background: #f9f9f9;
+  color: #009688;
+}
+.text-ellipsis {
+  display: block;
+  width: 98%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.fly-panel {
+  margin-bottom: 15px;
+  border-radius: 2px;
+  background-color: #fff;
+  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+  padding: 20px;
+}
+.mt-20 {
+  margin-top: 20px;
+}
+.mr-10 {
+  margin-right: 10px;
+}
+.mr-4 {
+  margin-right: 4px;
+}
+.no-shadow {
+  box-shadow: none;
+  margin: 0;
+}
+.layui-card {
+  border: 1px solid #e6e6e6;
+}
+table {
+  width: 100%;
+}
+table td {
+  padding: 8px 0;
+}
+table tr:hover td {
+  background-color: #f5f5f5;
+}
+section {
+  margin-bottom: 10px;
+}
+.monitorItem,
+.volumeItem {
+  display: flex;
+  height: 100px;
+  align-items: center;
+  font-size: 16px;
+  justify-content: center;
+}
+.monitorItem .layui-icon,
+.volumeItem .layui-icon {
+  font-size: 30px;
+  color: #1E9FFF;
+}
+.monitorItem .title,
+.volumeItem .title {
+  margin: 0 10px;
+  color: #666;
+}
+.monitorItem .value,
+.volumeItem .value {
+  color: #72aad4;
+}
+.monitorWrapper .layui-badge {
+  margin: 0 5px;
+}
+.monitorWrapper .monitorItem .right {
+  margin-left: 10px;
+}
+.monitorWrapper .monitorItem .right .layui-badge-dot {
+  margin-right: 5px;
+  margin-bottom: 1px;
+}
+.monitorWrapper .monitorItem .right .title {
+  margin: 0;
+}
+.monitorWrapper .monitorItem .right .value:nth-child(2) {
+  color: #009688;
+}
+.monitorWrapper .monitorItem .right .value:nth-child(3) {
+  color: #FF5722;
+}
+.articleListTable tr {
+  border-bottom: 1px dashed #d6dfe6;
+  color: #999;
+}

@@ -1,0 +1,69 @@
+<style>
+    .indexLayout .layui-header {
+        background-color: #23262E;
+        position: unset;
+    }
+</style>
+<div class="layui-container">
+    <div class="fly-panel mt-20">
+        <div class="layui-tab layui-tab-brief" lay-filter="user">
+            <ul class="layui-tab-title">
+                <li class="layui-this">登录</li>
+                <li>
+                    <a href="signup">注册</a>
+                </li>
+            </ul>
+            <div class="layui-form layui-tab-content" style="padding: 20px 0;">
+                <div class="layui-tab-item layui-show">
+                    <div class="layui-form layui-form-pane">
+                        <form method="post" id="signinForm" action='/passport/local' method='post'>
+                            <div class="layui-form-item">
+                                <label for="loginname" class="layui-form-label">姓名</label>
+                                <div class="layui-input-inline">
+                                    <input type="text" id="loginname" name="loginname" required lay-verify="required" autocomplete="off" class="layui-input">
+                                </div>
+                            </div>
+                            <div class="layui-form-item">
+                                <label for="pass" class="layui-form-label">密码</label>
+                                <div class="layui-input-inline">
+                                    <input type="password" id="pass" name="pass" required lay-verify="required" autocomplete="off" class="layui-input">
+                                </div>
+                            </div>
+                            <div class="layui-form-item">
+                                <button class="layui-btn" lay-filter="signinForm" lay-submit>立即登录</button>
+                                <span style="padding-left:20px;">
+                                </span>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+        layui.use(['form'], function () {
+            var $ = layui.jquery
+                , form = layui.form
+                , layer = layui.layer;
+
+
+            //提交注册
+            // form.on('submit(signinForm)', function (data) {
+            //     $.ajax({
+            //         type: 'post',
+            //         dataType: 'json',
+            //         data: data.field,
+            //         url: '/signin',
+            //         success: function (res) {
+            //             layer.alert(res.message);
+            //         },
+            //         error: function (error) {
+            //             layer.msg(error.responseJSON.message || '请求异常，请重试', { shift: 6 });
+            //         }
+            //     });
+            //     return false;
+            // });
+        });
+    </script>

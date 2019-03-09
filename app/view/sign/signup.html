@@ -1,0 +1,108 @@
+<style>
+    .indexLayout .layui-header {
+        background-color: #23262E;
+        position: unset;
+    }
+</style>
+<div class="layui-container">
+    <div class="fly-panel mt-20">
+        <div class="layui-tab layui-tab-brief" lay-filter="user">
+            <ul class="layui-tab-title">
+                <li>
+                    <a href="signin">登录</a>
+                </li>
+                <li class="layui-this">注册</li>
+            </ul>
+            <div class="layui-form layui-tab-content" style="padding: 20px 0;">
+                <div class="layui-tab-item layui-show">
+                    <div class="layui-form layui-form-pane">
+                        <form method="post" id="signupForm">
+                            <div class="layui-form-item">
+                                <label for="loginname" class="layui-form-label">姓名</label>
+                                <div class="layui-input-inline">
+                                    <input type="text" id="loginname" name="loginname" lay-verify="loginname" lay-verify="required" autocomplete="off" class="layui-input">
+                                </div>
+                                <div class="layui-form-mid layui-word-aux">将会成为您唯一的登录名</div>
+                            </div>
+                            <div class="layui-form-item">
+                                <label for="company" class="layui-form-label">公司</label>
+                                <div class="layui-input-inline">
+                                    <input type="text" id="company" name="company" lay-verify="company" lay-verify="required" autocomplete="off" class="layui-input">
+                                </div>
+                            </div>
+                            <div class="layui-form-item">
+                                <label for="telephone" class="layui-form-label">手机号</label>
+                                <div class="layui-input-inline">
+                                    <input type="telephone" id="telephone" name="telephone" lay-verify="required|phone" lay-verify="required" autocomplete="off"
+                                        class="layui-input">
+                                </div>
+                            </div>
+                            <div class="layui-form-item">
+                                <label for="pass" class="layui-form-label">密码</label>
+                                <div class="layui-input-inline">
+                                    <input type="password" id="pass" name="pass" lay-verify="pass" lay-verify="required" autocomplete="off" class="layui-input">
+                                </div>
+                                <div class="layui-form-mid layui-word-aux">6到12个字符</div>
+                            </div>
+                            <div class="layui-form-item">
+                                <label for="re_pass" class="layui-form-label">重复密码</label>
+                                <div class="layui-input-inline">
+                                    <input type="password" id="re_pass" name="re_pass" lay-verify="re_pass" lay-verify="required" autocomplete="off" class="layui-input">
+                                </div>
+                            </div>
+                            <div class="layui-form-item">
+                                <button class="layui-btn" lay-filter="signupForm" lay-submit>立即注册</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    layui.use(['form'], function () {
+        var $ = layui.jquery
+            , form = layui.form
+            , layer = layui.layer;
+
+        //自定义验证规则
+        form.verify({
+            loginname: function (value) {
+                if (!value) { return '姓名不能为空'; return false; }
+                if (value.length > 30) { return '姓名长度不得超过30个字符'; return false; }
+            },
+            company: function (value) {
+                if (!value) { return '公司不能为空'; return false; }
+                if (value.length > 255) { return '公司名称长度不得超过255个字符'; return false; }
+            },
+            pass: [/(.+){6,12}$/, '密码必须6到12位']
+        });
+
+        //提交注册
+        form.on('submit(signupForm)', function (data) {
+            if (data.field.pass !== data.field.re_pass) {
+                layer.msg('两次密码输入不一致。');
+                return false;
+            }
+
+            $.ajax({
+                type: 'post',
+                dataType: 'json',
+                data: data.field,
+                url: '/signup',
+                success: function (res) {
+                    layer.alert(res.message);
+                    if (res.code) {
+                        // 跳转到登陆
+                        setTimeout(window.location.href = 'signin', 1000);
+                    }
+                },
+                error: function (error) {
+                    layer.msg(error.responseJSON.message || '请求异常，请重试', { shift: 6 });
+                }
+            });
+            return false;
+        });
+    });
+</script>
